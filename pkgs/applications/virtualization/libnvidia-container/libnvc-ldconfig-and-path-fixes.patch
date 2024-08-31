@@ -116,14 +116,14 @@ index 30e3cfd..6d12a50 100644
                  return (-1);
          }
 diff --git a/src/nvc_ldcache.c b/src/nvc_ldcache.c
-index 6ff380f..cbe6a69 100644
+index db3b2f69..ae5def43 100644
 --- a/src/nvc_ldcache.c
 +++ b/src/nvc_ldcache.c
-@@ -340,7 +340,7 @@ nvc_ldcache_update(struct nvc_context *ctx, const struct nvc_container *cnt)
+@@ -367,7 +367,7 @@ nvc_ldcache_update(struct nvc_context *ctx, const struct nvc_container *cnt)
          if (validate_args(ctx, cnt != NULL) < 0)
                  return (-1);
  
--        argv = (char * []){cnt->cfg.ldconfig, cnt->cfg.libs_dir, cnt->cfg.libs32_dir, NULL};
+-        argv = (char * []){cnt->cfg.ldconfig, "-f", "/etc/ld.so.conf", "-C", "/etc/ld.so.cache", cnt->cfg.libs_dir, cnt->cfg.libs32_dir, NULL};
 +        argv = (char * []){cnt->cfg.ldconfig, "-f", "/tmp/ld.so.conf.nvidia-host", "-C", "/tmp/ld.so.cache.nvidia-host", cnt->cfg.libs_dir, cnt->cfg.libs32_dir, NULL};
          if (*argv[0] == '@') {
                  /*
